@@ -1,0 +1,65 @@
+package chris.bridewell.a21_coding_challenge;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+    public static final String EXTRA_TEXT = "chris.bridewell.a21_coding_challenge.extra.Text";
+    private static final String passage1 = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+    private static final String passage2 = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).";
+    private static final String passage3 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac sollicitudin ligula, in dictum urna. Vivamus nec tellus eget magna laoreet consectetur. Ut ultrices augue quis augue rhoncus tempus. Integer semper varius orci at condimentum. Fusce quis volutpat ligula. Suspendisse porta ut arcu eu vulputate. Sed vitae lacus sit amet odio efficitur pulvinar eu ac diam. Etiam sapien ligula, consectetur sit amet arcu quis, commodo bibendum leo. In leo metus, efficitur at ante vel, pellentesque feugiat justo. Nulla fringilla lorem sit amet massa tempor, auctor finibus metus dapibus.\n" +
+            "\n" +
+            "Nulla euismod, nisi vel placerat hendrerit, ligula diam vestibulum elit, nec pretium nibh libero non erat. Maecenas eu tincidunt odio, sed congue risus. Sed massa mauris, sollicitudin eu mi eget, consectetur luctus nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis tincidunt metus tincidunt est imperdiet euismod. Nam pellentesque ullamcorper enim sed vehicula. Donec orci odio, fermentum id ante a, euismod ultrices nunc. Morbi egestas, lacus in dictum tincidunt, risus justo rutrum velit, in fringilla tellus dolor eget est. Vestibulum dapibus varius mauris, at consequat ex. Maecenas mollis pretium pharetra. Vestibulum molestie imperdiet mauris, a elementum nunc venenatis vel. Nam at pulvinar ex, a accumsan purus. Donec efficitur sem sit amet ultrices dapibus. Sed vestibulum sollicitudin sapien et pharetra. Vivamus porttitor ut mauris quis mattis. Pellentesque faucibus arcu sit amet eros varius faucibus.\n" +
+            "\n" +
+            "Integer eleifend pellentesque sapien mattis posuere. Donec sed tellus ante. Suspendisse vitae ultricies sem. Etiam mattis nunc risus, eget malesuada magna eleifend ut. Donec quam nisi, pretium in volutpat sit amet, viverra ut risus. Donec sed velit quis ligula mollis venenatis vitae suscipit tellus. Nunc vel nulla vel mauris elementum faucibus eu eget turpis. Nulla neque eros, viverra nec commodo eget, gravida eu risus.\n" +
+            "\n" +
+            "Proin molestie scelerisque facilisis. Quisque eget ligula in ipsum condimentum semper. Praesent id urna tincidunt, dapibus sem non, imperdiet diam. Phasellus tincidunt lobortis ex, eget vulputate felis suscipit at. Sed elementum tortor ut augue iaculis placerat. Curabitur aliquam, magna ac semper pulvinar, nibh ligula fermentum turpis, a scelerisque arcu massa sit amet arcu. Cras blandit, lacus at elementum pharetra, ligula nibh elementum lectus, elementum tempor massa arcu vitae eros. Aliquam gravida libero ut mi posuere, vitae mollis odio venenatis. Sed finibus felis vel ipsum volutpat, feugiat pulvinar quam eleifend. Maecenas ut tortor sit amet nibh interdum semper. Donec vestibulum nisl dui, ac bibendum urna dapibus eget.\n" +
+            "\n" +
+            "Donec auctor est quis metus volutpat, sed aliquet eros vehicula. Sed vitae nunc id neque ultricies rutrum quis ut ex. Nunc et sodales ex. Proin pellentesque lacus eget consequat congue. Sed mollis nec elit tristique maximus. Duis gravida eleifend placerat. Suspendisse tempus nulla at massa commodo consectetur. Praesent consectetur, dui eu molestie convallis, leo tortor placerat lacus, id ultrices magna diam ac diam.\n" +
+            "\n" +
+            "Curabitur fermentum ex nunc, nec tincidunt eros commodo sit amet. Maecenas sed felis lectus. Curabitur vulputate nulla turpis, non pretium felis tristique eleifend. Praesent nisl eros, fermentum ac est eu, vehicula posuere tortor. Mauris eros risus, tempus quis velit ac, vestibulum imperdiet magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum molestie eros ac suscipit. Sed nec congue ante. Duis turpis sapien, malesuada consequat mi eget, fermentum eleifend lorem. Maecenas molestie neque metus, a vestibulum mauris dictum quis. Aliquam vulputate, justo id congue auctor, mauris orci accumsan lectus, non suscipit metus eros in eros. In sollicitudin volutpat risus sit amet suscipit. Etiam porttitor lacus eu justo interdum, vitae pellentesque magna efficitur.\n" +
+            "\n" +
+            "Vivamus justo est, aliquet sit amet porta in, gravida vel felis. Vestibulum eleifend semper felis, et congue nibh consequat auctor. Proin ac nibh placerat, dignissim orci elementum, fermentum magna. Donec hendrerit facilisis semper. Nam quis lectus at arcu rutrum sodales. Duis vehicula ullamcorper leo. Aenean blandit lorem quis congue euismod. Quisque rutrum urna non dictum rutrum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam eget arcu est. Curabitur ac turpis sed est dapibus condimentum. Suspendisse porttitor viverra auctor. Suspendisse interdum, diam eget vestibulum hendrerit, enim mi porta tellus, ut congue est nibh vestibulum quam. Nulla lobortis bibendum nisi, et maximus odio molestie sed. Duis in ullamcorper massa, id faucibus nisi. Suspendisse efficitur a quam feugiat maximus.\n" +
+            "\n" +
+            "Ut sed laoreet felis. Quisque vestibulum turpis libero, efficitur laoreet augue lobortis eget. Morbi sit amet magna pulvinar, venenatis erat a, malesuada magna. Donec finibus mauris orci, ac commodo tortor dapibus id. Sed placerat, turpis et placerat sodales, arcu arcu interdum urna, a hendrerit metus diam et erat. Ut tristique erat eu mollis cursus. Cras vehicula justo in ipsum lobortis vestibulum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur eget nulla eget ligula suscipit euismod. Sed hendrerit turpis vel porta tincidunt. Praesent vitae tempor lectus. Curabitur egestas augue a luctus pharetra. Mauris blandit nisi in convallis viverra. Phasellus eget semper dolor. Morbi commodo turpis nec pellentesque molestie. Aenean vehicula lectus et magna vehicula commodo.\n" +
+            "\n" +
+            "In maximus consequat consequat. Suspendisse potenti. Nulla a condimentum diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum augue magna, tristique nec eros id, sagittis facilisis arcu. Nam mollis lorem ligula, eget lacinia nunc congue et. Cras commodo felis elit, non euismod leo ultricies eget. In pellentesque nibh velit, mattis rutrum magna vehicula lacinia. Proin eros justo, convallis eget dui a, tincidunt pellentesque dui. Cras at odio id risus mollis laoreet. Mauris nibh eros, posuere eget porttitor non, elementum ornare nibh. Duis non gravida ipsum, vel interdum sapien.\n" +
+            "\n" +
+            "Nam faucibus augue quis erat pellentesque aliquet. Nulla vel ipsum a mi tincidunt iaculis. Nulla egestas, dolor at suscipit viverra, lorem purus vestibulum metus, et egestas enim velit semper augue. Morbi lacinia quam purus, at gravida ante eleifend non. Praesent ornare nibh eu sem vestibulum vehicula. Praesent vulputate dolor vitae dui tristique rhoncus. Proin porttitor luctus lorem, eget consectetur orci consectetur non. Ut quis aliquet est, vitae rutrum felis.\n" +
+            "\n" +
+            "Vestibulum porta arcu vel mattis ornare. Fusce lorem arcu, pellentesque in sagittis ac, condimentum ut libero. Nam consequat dui ac nulla vulputate faucibus. Vestibulum dapibus ut nibh dignissim aliquet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur vel fringilla enim. Nunc eleifend libero vitae felis interdum, et congue erat laoreet. Donec dui purus, rutrum sit amet bibendum in, pellentesque vel ipsum. Vestibulum in dui nunc. Ut sed est aliquet, dictum nisl id, vestibulum felis.\n" +
+            "\n" +
+            "Pellentesque eu eros sed risus vehicula mattis et a risus. Ut elementum nisl eros, at scelerisque massa aliquet venenatis. Pellentesque eget leo est. In ac odio vestibulum, rutrum lectus vel, tristique lectus. Sed ut neque eros. Ut tempus bibendum convallis. Pellentesque tincidunt ipsum justo, sed luctus tortor convallis id. Nam vel scelerisque lectus. Donec eget egestas tortor, at sollicitudin metus. Ut erat arcu, feugiat non rutrum sed, ultricies eu nisl. Aenean lacinia quam ac euismod finibus. Etiam nec dolor ut diam rhoncus posuere eu quis libero. Suspendisse commodo rhoncus ultrices. Quisque facilisis mollis neque.\n" +
+            "\n" +
+            "In hac habitasse platea dictumst. Vestibulum bibendum magna in vulputate posuere. Etiam blandit libero pharetra, viverra dui dapibus, pretium ex. Aenean id mollis justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin vitae urna feugiat, pellentesque massa ultrices, iaculis nisl. Sed rutrum, dui eget finibus venenatis, mauris sapien varius felis, vel gravida magna orci quis velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer tincidunt efficitur nulla, eget lobortis odio auctor at. Vivamus ut ligula fermentum, ornare mi ac, rutrum lorem. Quisque pharetra molestie libero, non sagittis justo dapibus eu. Donec pretium sodales quam eget ultricies. Curabitur viverra purus quam, eu vehicula lorem tempor vel.\n" +
+            "\n" +
+            "Ut a augue eget erat consequat hendrerit ac in nisi. Nullam molestie non felis eu hendrerit. Fusce mollis, sapien vel iaculis cursus, felis metus consectetur tortor, at iaculis est libero vitae ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus at laoreet risus. Duis et nulla sodales, vulputate magna non, vehicula nisi. In efficitur vitae dolor convallis accumsan. Nam finibus risus ac laoreet lobortis. Nullam a metus id nunc suscipit suscipit at non sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin condimentum ex quis eleifend mattis. Morbi non mattis neque. Vivamus id interdum mi. Pellentesque facilisis nisi dui, quis suscipit ligula lobortis placerat.\n" +
+            "\n" +
+            "Donec rutrum finibus dui vel auctor. In dictum, mauris id scelerisque iaculis, est sapien congue tortor, in luctus erat ligula a turpis. Praesent nec massa malesuada, suscipit ex in, varius mauris. Vivamus tristique libero quis lectus gravida, quis commodo nunc scelerisque. Integer quis tempor metus. Aliquam lobortis urna at orci tincidunt tempor. Aliquam a urna id purus tristique sagittis. Aliquam semper, felis nec tempor interdum, sapien lorem condimentum velit, a euismod est nibh et mauris. ";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void launchSecondActivity(View view) {
+        Log.d(LOG_TAG, "Button Clicked!");
+        Intent intent = new Intent(this, SecondActivity.class);
+        String message = "";
+        int id = view.getId();
+        if (id == R.id.text1Btn)
+            message = passage1;
+        else if (id == R.id.text2Btn)
+            message = passage2;
+        else if (id == R.id.text3Btn)
+            message = passage3;
+        intent.putExtra(EXTRA_TEXT, message);
+        startActivity(intent);
+    }
+}
